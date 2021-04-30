@@ -1,6 +1,8 @@
 # IvSe finances Token List Info
 ## Overview
-This repository contains token info from the Binance smart Chain. 
+
+This repository contains token info for the Binance smart Chain. 
+
 Was originally forked from https://github.com/trustwallet/assets and heavily modified.
 
 ## add a new token
