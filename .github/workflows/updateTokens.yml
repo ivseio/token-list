@@ -2,7 +2,7 @@ name: updateTokens
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '*/2 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
