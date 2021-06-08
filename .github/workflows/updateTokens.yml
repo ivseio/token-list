@@ -17,7 +17,8 @@ jobs:
         sudo git clone https://github.com/ivseio/token-list.git
     - name: Clean Up assets
       run: |
-        sudo cd assets/blockchains/smartchain/assets/
+        ls
+        cd assets/blockchains/smartchain/assets/
         sudo find . -name "*.json" -type f -delete        
     - name: Copy to my project
       run: |
