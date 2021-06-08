@@ -14,18 +14,16 @@ jobs:
       run: |
         rm -rf assets 
         sudo git clone https://github.com/trustwallet/assets.git
-        sudo git clone https://github.com/ivseio/token-list.git
     - name: Clean Up assets
       run: |
-        ls
-        cd assets/blockchains/smartchain/assets/
-        sudo find . -name "*.json" -type f -delete        
+        sudo find assets/blockchains/smartchain/assets/ -name "*.json" -type f -delete        
     - name: Copy to my project
       run: |
-        sudo cp -R * ../../../../token-list/binance/assets/
+        sudo cp -R assets/blockchains/smartchain/assets/* binance/assets/
+        sudo rm -rf assets
+        ls
     - name: Update github
       run: |
-        sudo cd ../../../../token-list
         sudo git config --local user.email "ivsebot@ivse.finance"
         sudo git config --local user.name "IvseBot"
         sudo git add .
