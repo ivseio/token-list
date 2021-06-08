@@ -17,14 +17,14 @@ jobs:
         sudo git clone https://github.com/ivseio/token-list.git
     - name: Clean Up assets
       run: |
-        cd assets/blockchains/smartchain/assets/
-        find . -name "*.json" -type f -delete        
+        sudo cd assets/blockchains/smartchain/assets/
+        sudo find . -name "*.json" -type f -delete        
     - name: Copy to my project
       run: |
-        cp -R * ../../../../token-list/binance/assets/
+        sudo cp -R * ../../../../token-list/binance/assets/
     - name: Update github
       run: |
-        cd ../../../../token-list
+        sudo cd ../../../../token-list
         sudo git config --local user.email "ivsebot@ivse.finance"
         sudo git config --local user.name "IvseBot"
         sudo git add .
