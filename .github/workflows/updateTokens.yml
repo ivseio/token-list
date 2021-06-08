@@ -1,0 +1,33 @@
+name: updateTokens
+
+on:
+  schedule:
+    - cron:  '0 8 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Installing checkout
+      uses: actions/checkout@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Cloning projects
+      run: |
+        rm -rf assets 
+        sudo git clone https://github.com/trustwallet/assets.git
+        sudo git clone https://github.com/ivseio/token-list.git
+    - name: Clean Up assets
+      run: |
+        cd assets/blockchains/smartchain/assets/
+        find . -name "*.json" -type f -delete        
+    - name: Copy to my project
+      run: |
+        cp -R * ../../../../token-list/binance/assets/
+    - name: Update github
+      run: |
+        cd ../../../../token-list
+        sudo git config --local user.email "ivsebot@ivse.finance"
+        sudo git config --local user.name "IvseBot"
+        sudo git add .
+        sudo git commit -m "Update logos" -a
+        sudo git push "https://ivseio:${{ secrets.GITHUB_TOKEN }}@github.com/ivseio/token-list.git"
